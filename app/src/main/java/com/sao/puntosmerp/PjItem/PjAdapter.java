@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -36,24 +37,27 @@ public class PjAdapter extends RecyclerView.Adapter<PjItem> {
         // create a new view
         view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sample_pj_view, parent, false);
         final PjItem vh = new PjItem(view);
-        view.setOnLongClickListener (new OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                int pos = vh.getAdapterPosition();
-                Log.d("TAG","Has hecho click en "+pos);
-                Log.d("TAG", "PJ: "+mDataset.get(pos).getNombre());
-                listener.onPointsRequested(pos);
-                return true;
-            }
-        });
 
-        view.setOnClickListener(new OnClickListener() {
+        Button btn = view.findViewById(R.id.btnPuntos);
+        btn.setOnClickListener (new OnClickListener() {
             @Override
             public void onClick(View v) {
                 int pos = vh.getAdapterPosition();
-                listener.onSelected(pos);
+                Log.d("TAG", "PJ: "+mDataset.get(pos).getNombre());
+                listener.onPointsRequested(pos);
             }
         });
+
+        btn = view.findViewById(R.id.btnPuntosGrupo);
+        btn.setOnClickListener (new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int pos = vh.getAdapterPosition();
+                Log.d("TAG", "PJ: "+mDataset.get(pos).getNombre());
+                listener.onGroupPointsRequested(pos);
+            }
+        });
+
         return vh;
     }
 

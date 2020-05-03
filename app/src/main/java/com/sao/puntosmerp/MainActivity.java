@@ -52,8 +52,15 @@ public class MainActivity extends AppCompatActivity implements PjListener {
 
         if(savedInstanceState != null)
         {
-            mAdapter.setDataset((LinkedList<Pj>)savedInstanceState.getSerializable("PJs"));
-            puntosGrupo=savedInstanceState.getInt("Grp");
+            try {
+                mAdapter.setDataset((LinkedList<Pj>) savedInstanceState.getSerializable("PJs"));
+                puntosGrupo = savedInstanceState.getInt("Grp");
+
+            }
+            catch (Exception ex)
+            {
+                Log.d(TAG,"No se pudo restaurar el estado");
+            }
         }
         else
         {
