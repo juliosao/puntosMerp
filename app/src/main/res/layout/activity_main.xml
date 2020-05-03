@@ -50,7 +50,8 @@
             android:layout_gravity="bottom|end"
             android:clickable="true"
             android:onClick="addPj"
-            app:srcCompat="@android:drawable/ic_menu_add" />
+            app:srcCompat="@mipmap/ic_useradd_foreground"
+            app:useCompatPadding="false" />
 
     </LinearLayout>
 

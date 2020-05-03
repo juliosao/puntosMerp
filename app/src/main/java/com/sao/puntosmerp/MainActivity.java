@@ -24,6 +24,7 @@ import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity implements PjListener {
     public static final int REQUEST_PUNTOS = 0;
+    public static final int REQUEST_GRUPO = 1;
     String FILENAME = "pjs";
     String TAG = "MainActivity";
 
@@ -104,16 +105,20 @@ public class MainActivity extends AppCompatActivity implements PjListener {
 
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
+        int idx;
+        Pj pj;
+
         if (resultCode == RESULT_OK)
         {
             switch (requestCode)
             {
+
                 case REQUEST_PUNTOS:
-                    int idx = data.getIntExtra(PointsActivity.IDX,0);
+                    idx = data.getIntExtra(PointsActivity.IDX,0);
                     puntosGrupo += data.getIntExtra(PointsActivity.GROUP,0);
                     txtPuntosGrupo.setText(""+puntosGrupo);
 
-                    Pj pj = (Pj)data.getSerializableExtra(PointsActivity.PJ);
+                    pj = (Pj)data.getSerializableExtra(PointsActivity.PJ);
                     mAdapter.set(idx,pj);
 
                     try
@@ -132,6 +137,29 @@ public class MainActivity extends AppCompatActivity implements PjListener {
                     }
 
                     break;
+                case REQUEST_GRUPO:
+                    idx = data.getIntExtra(PointsActivity.IDX,0);
+                    puntosGrupo = data.getIntExtra(PointsActivity.GROUP,0);
+                    txtPuntosGrupo.setText(""+puntosGrupo);
+
+                    pj = (Pj)data.getSerializableExtra(PointsActivity.PJ);
+                    mAdapter.set(idx,pj);
+
+                    try
+                    {
+                        File file = getFileStreamPath(FILENAME);
+                        FileOutputStream fos = new FileOutputStream(file);
+                        ObjectOutputStream oos = new ObjectOutputStream(fos);
+                        oos.writeObject(mAdapter.getDataset());
+                        oos.writeInt(puntosGrupo);
+                        oos.close();
+                        fos.close();
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.d(TAG,"Error de guardado: "+ex);
+                    }
+                    break;
             }
         }
 
@@ -147,15 +175,19 @@ public class MainActivity extends AppCompatActivity implements PjListener {
     }
 
     @Override
-    public void onSelected(int idx) {
-        mAdapter.setSelected(idx);
-    }
-
-    @Override
     public void onPointsRequested(int pos) {
         Intent i = new Intent(this,PointsActivity.class);
         i.putExtra(PointsActivity.PJ,mAdapter.get(pos));
         i.putExtra(PointsActivity.IDX,pos);
         startActivityForResult(i,REQUEST_PUNTOS);
+    }
+
+    @Override
+    public void onGroupPointsRequested(int pos) {
+        Intent i = new Intent(this,PuntosGrupo.class);
+        i.putExtra(PointsActivity.PJ,mAdapter.get(pos));
+        i.putExtra(PointsActivity.IDX,pos);
+        i.putExtra(PointsActivity.GROUP,puntosGrupo);
+        startActivityForResult(i,REQUEST_GRUPO);
     }
 }
