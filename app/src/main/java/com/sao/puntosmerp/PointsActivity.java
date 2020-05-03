@@ -127,7 +127,7 @@ public class PointsActivity extends AppCompatActivity implements TextWatcher {
 
             // Otros
             error = "Otros puntos";
-            data = txtMagias.getText().toString();
+            data = txtOtros.getText().toString();
             datos = data.split("[ ,]+");
             for (String dato : datos) {
                 if(!dato.isEmpty())

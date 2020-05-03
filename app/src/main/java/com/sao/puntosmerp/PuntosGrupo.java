@@ -80,5 +80,18 @@ public class PuntosGrupo extends AppCompatActivity {
                 finish();
             }
         });
+
+        btn = findViewById(R.id.btnClear);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra(PJ, pj);
+                intent.putExtra(IDX,idx);
+                intent.putExtra(GROUP,0);
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
     }
 }
