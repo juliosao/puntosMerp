@@ -23,11 +23,12 @@
 
         <Button
             android:id="@+id/btnDelete"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="64dip"
+            android:layout_height="64dip"
             android:layout_weight="0"
-            android:background="@android:color/transparent"
-            android:foreground="@drawable/ic_userdel"
+            android:foreground="@drawable/ic_user_del"
+            android:foregroundTint="#F44336"
+            android:padding="4dp"
             android:scaleType="fitCenter" />
     </LinearLayout>
 
@@ -55,8 +56,7 @@
             android:layout_width="64dip"
             android:layout_height="64dip"
             android:layout_weight="0"
-            android:background="@android:color/transparent"
-            android:foreground="@mipmap/ic_user_foreground"
+            android:foreground="@drawable/ic_user"
             android:scaleType="fitCenter" />
 
         <Button
@@ -64,8 +64,7 @@
             android:layout_width="64dip"
             android:layout_height="64dip"
             android:layout_weight="0"
-            android:background="@android:color/transparent"
-            android:foreground="@mipmap/ic_group_foreground"
+            android:foreground="@drawable/ic_group"
             android:scaleType="fitCenter" />
 
     </LinearLayout>
