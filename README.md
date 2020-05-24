@@ -13,7 +13,5 @@ This Android tool is designed to assign points to PJs in a role session for MERP
 
 ## What is NOT working
 
-* Delete PJs
-* Assign group points
-* Reset status
 * Save multiple status
+* Translations
