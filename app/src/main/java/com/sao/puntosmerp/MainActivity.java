@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -103,6 +105,24 @@ public class MainActivity extends AppCompatActivity implements PjListener {
         txtPuntosGrupo.setText(""+puntosGrupo);
     }
 
+    public void saveStatus()
+    {
+        try
+        {
+            File file = getFileStreamPath(FILENAME);
+            FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(mAdapter.getDataset());
+            oos.writeInt(puntosGrupo);
+            oos.close();
+            fos.close();
+        }
+        catch (Exception ex)
+        {
+            Log.d(TAG,"Error de guardado: "+ex);
+        }
+    }
+
     protected void onActivityResult(int requestCode, int resultCode,
                                     Intent data) {
         int idx;
@@ -120,22 +140,7 @@ public class MainActivity extends AppCompatActivity implements PjListener {
 
                     pj = (Pj)data.getSerializableExtra(PointsActivity.PJ);
                     mAdapter.set(idx,pj);
-
-                    try
-                    {
-                        File file = getFileStreamPath(FILENAME);
-                        FileOutputStream fos = new FileOutputStream(file);
-                        ObjectOutputStream oos = new ObjectOutputStream(fos);
-                        oos.writeObject(mAdapter.getDataset());
-                        oos.writeInt(puntosGrupo);
-                        oos.close();
-                        fos.close();
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.d(TAG,"Error de guardado: "+ex);
-                    }
-
+                   saveStatus();
                     break;
                 case REQUEST_GRUPO:
                     idx = data.getIntExtra(PointsActivity.IDX,0);
@@ -144,21 +149,7 @@ public class MainActivity extends AppCompatActivity implements PjListener {
 
                     pj = (Pj)data.getSerializableExtra(PointsActivity.PJ);
                     mAdapter.set(idx,pj);
-
-                    try
-                    {
-                        File file = getFileStreamPath(FILENAME);
-                        FileOutputStream fos = new FileOutputStream(file);
-                        ObjectOutputStream oos = new ObjectOutputStream(fos);
-                        oos.writeObject(mAdapter.getDataset());
-                        oos.writeInt(puntosGrupo);
-                        oos.close();
-                        fos.close();
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.d(TAG,"Error de guardado: "+ex);
-                    }
+                    saveStatus();
                     break;
             }
         }
@@ -189,5 +180,20 @@ public class MainActivity extends AppCompatActivity implements PjListener {
         i.putExtra(PointsActivity.IDX,pos);
         i.putExtra(PointsActivity.GROUP,puntosGrupo);
         startActivityForResult(i,REQUEST_GRUPO);
+    }
+
+    public void onDeleteRequested(final int idx)
+    {
+        new AlertDialog.Builder(this)
+                .setTitle("¿Borrar PJ?")
+                .setMessage("¿Realmente deseas borrar este PJ?")
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        mAdapter.del(idx);
+                        saveStatus();
+                    }})
+                .setNegativeButton(android.R.string.no, null).show();
+        //mAdapter.delete(pos);
     }
 }

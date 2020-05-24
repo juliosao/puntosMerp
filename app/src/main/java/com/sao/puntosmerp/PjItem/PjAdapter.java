@@ -58,6 +58,16 @@ public class PjAdapter extends RecyclerView.Adapter<PjItem> {
             }
         });
 
+        btn = view.findViewById(R.id.btnDelete);
+        btn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int pos = vh.getAdapterPosition();
+                Log.d("TAG", "DEL PJ: "+mDataset.get(pos).getNombre());
+                listener.onDeleteRequested(pos);
+            }
+        });
+
         return vh;
     }
 
@@ -97,6 +107,12 @@ public class PjAdapter extends RecyclerView.Adapter<PjItem> {
         int pos = mDataset.size();
         mDataset.add(pj);
         notifyDataSetChanged();
+    }
+
+    public void del(int idx)
+    {
+        mDataset.remove(idx);
+        notifyItemRemoved(idx);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
