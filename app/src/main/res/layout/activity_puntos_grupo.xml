@@ -10,7 +10,7 @@
         android:id="@+id/textView4"
         android:layout_width="373dp"
         android:layout_height="220dp"
-        android:text="Los puntos de grupo se basan en la mitad de los puntos conseguidos por el grupo de personajes. Pueden repartirse a deiscreción del DJ, aunque se suelen dar a los miembros más participativos."
+        android:text="@string/Explicacion_grupo"
         app:layout_constraintBottom_toTopOf="@+id/seekBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

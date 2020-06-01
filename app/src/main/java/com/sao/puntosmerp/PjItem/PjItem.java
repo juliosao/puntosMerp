@@ -21,6 +21,7 @@ import com.sao.puntosmerp.R;
 
 public class PjItem extends RecyclerView.ViewHolder {
     View view;
+    Context ctx;
     EditText txtPj;
     TextView txtPuntos;
     TextView txtNivel;
@@ -29,6 +30,7 @@ public class PjItem extends RecyclerView.ViewHolder {
     public PjItem(@NonNull final View itemView) {
         super(itemView);
 
+        ctx = itemView.getContext();
         view=itemView;
         txtPj = itemView.findViewById(R.id.txtPj);
         txtPuntos = itemView.findViewById(R.id.txtPuntos);
@@ -50,11 +52,10 @@ public class PjItem extends RecyclerView.ViewHolder {
         txtPuntos.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Context ctx = itemView.getContext();
                 ClipboardManager clipboard = (ClipboardManager) ctx.getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("Points", txtPuntos.getText());
+                ClipData clip = ClipData.newPlainText(ctx.getString(R.string.Puntuacion), txtPuntos.getText());
                 clipboard.setPrimaryClip(clip);
-                Toast.makeText(ctx,"Puntos copiados", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ctx,ctx.getString(R.string.Puntos_copiados), Toast.LENGTH_SHORT).show();
                 return true;
             }
         });
@@ -66,9 +67,9 @@ public class PjItem extends RecyclerView.ViewHolder {
     {
         this.pj=pj;
         txtPj.setText(pj.getNombre());
-        txtPuntos.setText(""+pj.getPuntos());
+        txtPuntos.setText(ctx.getString(R.string.Niv)+" "+pj.getPuntos());
         view.setSelected(pj.isSelected());
-        txtNivel.setText("Niv: "+pj.getNivel());
+        txtNivel.setText( +pj.getNivel());
     }
 
 }

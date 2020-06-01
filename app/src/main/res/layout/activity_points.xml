@@ -12,7 +12,7 @@
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Puntuación inicial:"
+        android:text="@string/Puntuacion_Inicial"
         android:textSize="24sp" />
 
     <TextView
@@ -27,7 +27,7 @@
         android:id="@+id/textView11"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Puntuación actual:" />
+        android:text="@string/Puntiacion_actual" />
 
     <TextView
         android:id="@+id/lblActual"
@@ -40,8 +40,7 @@
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Críticos realizados "
-         />
+        android:text="@string/Criticos_Realizados" />
 
     <EditText
         android:id="@+id/txtCriticos"
@@ -54,7 +53,7 @@
         android:id="@+id/textView7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Críticos recibidos" />
+        android:text="@string/Criticos_Recibidos" />
 
     <EditText
         android:id="@+id/txtRecibidos"
@@ -68,7 +67,7 @@
         android:id="@+id/textView8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Piezas conseguidas" />
+        android:text="@string/Piezas_Conseguidas" />
 
     <EditText
         android:id="@+id/txtPiezas"
@@ -82,7 +81,7 @@
         android:id="@+id/textView10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sortilegios realizados" />
+        android:text="@string/Sortilegios_Realizados" />
 
     <EditText
         android:id="@+id/txtMagias"
@@ -97,7 +96,7 @@
         android:id="@+id/textView9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Otros puntos:" />
+        android:text="@string/Otros_Puntos" />
 
     <EditText
         android:id="@+id/txtOtros"

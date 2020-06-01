@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">PuntosMerp</string>
+    <string name="Personajes">Personajes:</string>
+    <string name="Puntos_de_grupo">Puntos de grupo:</string>
+    <string name="Explicacion_grupo">Los puntos de grupo se basan en la mitad de los puntos conseguidos por el grupo de personajes. Pueden repartirse a deiscreción del DJ, aunque se suelen dar a los miembros más participativos.</string>
+    <string name="Puntuacion_Inicial">Puntuación inicial:</string>
+    <string name="Puntiacion_actual">Puntuación actual:</string>
+    <string name="Criticos_Realizados">Críticos realizados:</string>
+    <string name="Criticos_Recibidos">Críticos Recibidos:</string>
+    <string name="Piezas_Conseguidas">Piezas Conseguidas:</string>
+    <string name="Sortilegios_Realizados">Magias Realizadas</string>
+    <string name="Otros_Puntos">Otros Puntos:</string>
+    <string name="Puntuacion">Puntuacion:</string>
+    <string name="Niv">Niv:</string>
+    <string name="Puntos_copiados">Puntos copiados</string>
 </resources>

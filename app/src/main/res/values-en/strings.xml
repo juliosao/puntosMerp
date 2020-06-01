@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MerpPOints</string>
+    <string name="Personajes">characters:</string>
+    <string name="Puntos_de_grupo">Group score:</string>
+    <string name="Explicacion_grupo">Group points are based on half of the points earned by the group of characters. They can be given out at the discretion of the DJ, although they are usually given to the more participative members.</string>
+    <string name="Puntuacion_Inicial">Initial Score:</string>
+    <string name="Puntiacion_actual">Actual Score:</string>
+    <string name="Criticos_Realizados">Critics Made:</string>
+    <string name="Criticos_Recibidos">Critics Received:</string>
+    <string name="Piezas_Conseguidas">Achieved Pieces:</string>
+    <string name="Sortilegios_Realizados">Spells Made:</string>
+    <string name="Otros_Puntos">Other Points:</string>
+    <string name="Puntuacion">Score:</string>
+    <string name="Niv">Lvl:</string>
+    <string name="Puntos_copiados">Score copied</string>
+</resources>
