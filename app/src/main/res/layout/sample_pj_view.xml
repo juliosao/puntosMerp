@@ -21,6 +21,13 @@
             android:singleLine="true"
             android:text="Name" />
 
+        <TextView
+            android:id="@+id/txtNivel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Niv: 0" />
+
         <Button
             android:id="@+id/btnDelete"
             android:layout_width="64dip"
